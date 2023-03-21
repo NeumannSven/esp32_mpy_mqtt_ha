@@ -1,18 +1,14 @@
 import time
-import zugang
 from umqttsimple import MQTTClient
 import ubinascii
 import machine
 import micropython
 import network
 import esp
-#esp.osdebug(None)
-#import gc
-#gc.collect()
 
-ssid = zugang.ssid
-password = zugang.password
-mqtt_server = '192.168.2.2'
+ssid = 'YOUR_WLAN_SSID'
+password = 'YOUR_WLAN_PASSWORD'
+mqtt_server = 'YOUR_HA_IP_ADDRESS'
 client_id = ubinascii.hexlify(machine.unique_id())
 print(client_id)
 
@@ -70,8 +66,6 @@ def connect_and_subscribe():
   client.subscribe(cmd_topic)
   print('Connected to %s MQTT broker, subscribed to %s topic' % (mqtt_server, cmd_topic))
   return client
-
-
 
 client = connect_and_subscribe()
 print(client)
